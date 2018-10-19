@@ -19,6 +19,8 @@ type Config struct {
 	Tline        string
 	Tsymbolsize  string
 	Targets      []Target
+	UserName     string
+	UserPassword string
 }
 
 //Target Config

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"database/sql"
 	"encoding/json"
-	"github.com/gy-games-libs/seelog"
+	"github.com/cihub/seelog"
 	"io"
 	"io/ioutil"
 	"log"

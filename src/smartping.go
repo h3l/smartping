@@ -6,7 +6,7 @@ import (
 	"./http"
 	"flag"
 	"fmt"
-	"github.com/gy-games-libs/cron"
+	"github.com/robfig/cron"
 	"os"
 	"runtime"
 	"sync"
@@ -39,11 +39,11 @@ func main() {
 		}
 		wg.Wait()
 		go funcs.StartAlert()
-	}, "ping")
+	})
 	c.AddFunc("0 0 0 * * *", func() {
 		go funcs.ClearAlertTable()
 		go funcs.ClearPingTable()
-	}, "mtc")
+	})
 	c.Start()
 	http.StartHttp()
 }

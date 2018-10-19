@@ -3,7 +3,7 @@ package funcs
 import (
 	"../g"
 	"../nettools"
-	"github.com/gy-games-libs/seelog"
+	"github.com/cihub/seelog"
 	"strconv"
 	"sync"
 	"time"

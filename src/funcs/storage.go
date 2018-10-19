@@ -2,8 +2,8 @@ package funcs
 
 import (
 	"../g"
-	_ "github.com/gy-games-libs/go-sqlite3"
-	"github.com/gy-games-libs/seelog"
+	_ "github.com/mattn/go-sqlite3"
+	"github.com/cihub/seelog"
 	"time"
 )
 

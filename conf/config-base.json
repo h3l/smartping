@@ -4,6 +4,8 @@
 	"Ip": "",
 	"Timeout": "5",
 	"Password": "smartping",
+	"UserName": "username",
+	"UserPassword": "password",
 	"Alerthistory": 7,
 	"Alertcycle": 1,
 	"Alertsound": "/alert.mp3",

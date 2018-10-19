@@ -5,7 +5,7 @@ import (
 	"../nettools"
 	"bytes"
 	"fmt"
-	"github.com/gy-games-libs/seelog"
+	"github.com/cihub/seelog"
 	"strconv"
 	"time"
 )

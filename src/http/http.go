@@ -4,7 +4,7 @@ import (
 	"../g"
 	"encoding/json"
 	"fmt"
-	"github.com/gy-games-libs/seelog"
+	"github.com/cihub/seelog"
 	"log"
 	"net/http"
 	"os"
@@ -32,8 +32,13 @@ func RenderJson(w http.ResponseWriter, v interface{}) {
 }
 
 func StartHttp() {
-	configApiRoutes()
-	configIndexRoutes()
+	http.HandleFunc("/api/config.json", buildChain(GetConfig, Auth))
+	http.HandleFunc("/api/ping.json", buildChain(PingJson, Auth))
+	http.HandleFunc("/api/topology.json", buildChain(TopologyJson, Auth))
+	http.HandleFunc("/api/alert.json", buildChain(AlertJson, Auth))
+	http.HandleFunc("/api/saveconfig.json", buildChain(SaveconfigJson, Auth))
+	http.HandleFunc("/", buildChain(Index, Auth))
+
 	seelog.Info("[func:StartHttp] starting to listen on ", g.Cfg.Port)
 	s := fmt.Sprintf(":%d", g.Cfg.Port)
 	err := http.ListenAndServe(s, nil)
