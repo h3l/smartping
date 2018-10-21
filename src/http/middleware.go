@@ -20,21 +20,21 @@ func buildChain(f http.HandlerFunc, m ...middleware) http.HandlerFunc {
 func Auth(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		username, err := r.Cookie("username")
-		if err !=nil{
+		if err != nil {
 			seelog.Info(err)
 			http.Error(w, "Not authorized", 401)
 			return
 		}
 		password, err := r.Cookie("password")
-		if err !=nil{
+		if err != nil {
 			seelog.Info(err)
 			http.Error(w, "Not authorized", 401)
 			return
 		}
-		seelog.Info(username, password,g.Cfg.UserName, g.Cfg.UserPassword,  g.Cfg.UserName == username.Value, g.Cfg.UserPassword == password.Value)
+		seelog.Info(username, password, g.Cfg.UserName, g.Cfg.UserPassword, g.Cfg.UserName == username.Value, g.Cfg.UserPassword == password.Value)
 		if (g.Cfg.UserName == username.Value) && (g.Cfg.UserPassword == password.Value) {
 			next.ServeHTTP(w, r)
-		}else{
+		} else {
 			http.Error(w, "Not authorized", 401)
 			return
 		}

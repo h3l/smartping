@@ -358,3 +358,20 @@ func SaveconfigJson(w http.ResponseWriter, r *http.Request) {
 	preout["status"] = "true"
 	RenderJson(w, preout)
 }
+
+func SetCookie(w http.ResponseWriter, r *http.Request) {
+	userName := r.URL.Query().Get("username")
+	password := r.URL.Query().Get("password")
+
+	http.SetCookie(w, &http.Cookie{
+		Name:       "username",
+		Value:      userName,
+		Path:       "/",
+	})
+	http.SetCookie(w, &http.Cookie{
+		Name:       "password",
+		Value:      password,
+		Path:       "/",
+	})
+	http.Redirect(w, r, "/", http.StatusFound)
+}

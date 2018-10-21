@@ -37,6 +37,7 @@ func StartHttp() {
 	http.HandleFunc("/api/topology.json", buildChain(TopologyJson, Auth))
 	http.HandleFunc("/api/alert.json", buildChain(AlertJson, Auth))
 	http.HandleFunc("/api/saveconfig.json", buildChain(SaveconfigJson, Auth))
+	http.HandleFunc("/set/cookie", SetCookie)
 	http.HandleFunc("/", buildChain(Index, Auth))
 
 	seelog.Info("[func:StartHttp] starting to listen on ", g.Cfg.Port)
