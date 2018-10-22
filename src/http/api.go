@@ -348,6 +348,8 @@ func SaveconfigJson(w http.ResponseWriter, r *http.Request) {
 	nconfig.Ver = g.Cfg.Ver
 	nconfig.Port = g.Cfg.Port
 	nconfig.Password = g.Cfg.Password
+	nconfig.UserPassword = g.Cfg.UserPassword
+	nconfig.UserName = g.Cfg.UserName
 	g.Cfg = nconfig
 	saveerr := g.SaveConfig()
 	if saveerr != nil {
